@@ -27,7 +27,7 @@ public class OutputView {
     }
 
     public static void printWinners(List<String> winnerNames) {
-        StringBuilder winners = new StringBuilder(LINE_SEPARATOR + "최종 우승자 : ");
+        StringBuilder winners = new StringBuilder("최종 우승자 : ");
         for (String winnerName : winnerNames) {
             winners.append(winnerName).append(WINNER_SEPARATOR);
         }
