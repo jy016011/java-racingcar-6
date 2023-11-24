@@ -32,7 +32,7 @@
 - [X] 위 경우를 하나라도 만족하지 않으면 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
 -
 
-3. 서도할 횟수를 입력 받는다.
+3. 시도할 횟수를 입력 받는다.
 
 - [X] `시도할 회수는 몇회인가요?`를 출력한다.
 
@@ -72,9 +72,6 @@
 ```
 git clone -b refactoring https://github.com/jy016011/java-racingcar-6.git
 ```
-
-- 혹은 [여기](https://github.com/jy016011/java-racingcar-6/tree/refactoring)로 이동하여 `<> Code` 버튼을 누른 후 `Download ZIP`을 눌러 파일을
-  다운로드 받습니다.
 
 **2. 실행**
 
