@@ -48,4 +48,13 @@ public class InputViewTest {
         assertThat(systemReceived).isEqualTo(userInput);
     }
 
+    @DisplayName("시도 횟수 입력 테스트")
+    @Test
+    void getNumberOfRounds() {
+        String userInput = "1";
+        command(userInput);
+        String systemReceived = InputView.getNumberOfRounds();
+        assertThat(output()).contains("시도할 회수는 몇회인가요?");
+        assertThat(systemReceived).isEqualTo(userInput);
+    }
 }
