@@ -4,6 +4,8 @@ import racingcar.utils.ArgumentValidator;
 
 public class Car implements Comparable<Car> {
     private final static int MOVING_FORWARD = 4;
+    private final static int MIN_LENGTH_OF_NAME = 1;
+    private final static int MAX_LENGTH_OF_NAME = 5;
     private final String name;
     private int position;
 
@@ -40,7 +42,7 @@ public class Car implements Comparable<Car> {
     }
 
     private void validate(String name) {
-        ArgumentValidator.isNotLessThan(name.length(), 1);
-        ArgumentValidator.isNotGreaterThan(name.length(), 5);
+        ArgumentValidator.isNotLessThan(name.length(), MIN_LENGTH_OF_NAME);
+        ArgumentValidator.isNotGreaterThan(name.length(), MAX_LENGTH_OF_NAME);
     }
 }
