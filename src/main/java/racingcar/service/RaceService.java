@@ -1,8 +1,6 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.RaceOfficial;
@@ -13,22 +11,15 @@ public class RaceService {
     private static final int FIRST_ROUND = 1;
     private static final int MIN_RANDOM_NUMBER = 0;
     private static final int MAX_RANDOM_NUMBER = 9;
-    private List<Car> cars;
     private int numberOfRounds;
-    private RaceOfficial raceOfficial;
+    private final RaceOfficial raceOfficial = new RaceOfficial();
 
     public void setCars(String userInput) {
-        List<String> carNames = StringChanger.toTrimmedStringList(userInput, ",");
-        validateCarNames(carNames);
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-        this.cars = cars;
+        raceOfficial.setCars(userInput);
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return raceOfficial.getCars();
     }
 
     public void setRounds(String userInput) {
@@ -42,18 +33,13 @@ public class RaceService {
     }
 
     public void raceCars() {
-        for (Car car : cars) {
+        for (Car car : raceOfficial.getCars()) {
             car.race(Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER));
         }
     }
 
     public List<String> getWinners() {
-        raceOfficial = new RaceOfficial();
-        return raceOfficial.findWinners(cars);
-    }
-
-    private void validateCarNames(List<String> carNames) {
-        ArgumentValidator.isUnique(carNames);
+        return raceOfficial.findWinners();
     }
 
     private void validateNumberOfRounds(int numberOfRounds) {

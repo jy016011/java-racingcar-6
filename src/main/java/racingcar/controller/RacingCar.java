@@ -5,6 +5,7 @@ import racingcar.views.InputView;
 import racingcar.views.OutputView;
 
 public class RacingCar {
+    private static final int FIRST_ROUND = 1;
     private RaceService raceService;
 
     public void init() {
@@ -12,14 +13,27 @@ public class RacingCar {
     }
 
     public void Run() {
+        getCarNames();
+        getNumberOfRounds();
+        printResult();
+    }
+
+    private void getCarNames() {
         String userInput = InputView.getCarNames();
         raceService.setCars(userInput);
-        userInput = InputView.getNumberOfRounds();
+    }
+
+    private void getNumberOfRounds() {
+        String userInput = InputView.getNumberOfRounds();
         raceService.setRounds(userInput);
+    }
+
+    private void printResult() {
         OutputView.printPrefaceOfResult();
-        for (int round = 1; round <= raceService.getNumberOfRounds(); round++) {
+        for (int round = FIRST_ROUND; round <= raceService.getNumberOfRounds(); round++) {
             raceService.raceCars();
             OutputView.printResultOfRound(raceService.getCars());
         }
+        OutputView.printWinners(raceService.getWinners());
     }
 }
