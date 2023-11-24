@@ -33,6 +33,12 @@ public class OutputViewTest {
         return captor.toString();
     }
 
+    @DisplayName("실행 결과 문구 출력 확인")
+    @Test
+    void printPrefaceOfResult() {
+        OutputView.printPrefaceOfResult();
+        assertThat(output()).contains("실행 결과");
+    }
 
     @DisplayName("라운드 결과 출력 확인")
     @Test

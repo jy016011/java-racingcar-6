@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.RaceOfficial;
 import racingcar.utils.ArgumentValidator;
 import racingcar.utils.StringChanger;
 
@@ -14,6 +15,7 @@ public class RaceService {
     private static final int MAX_RANDOM_NUMBER = 9;
     private List<Car> cars;
     private int numberOfRounds;
+    private RaceOfficial raceOfficial;
 
     public void setCars(String userInput) {
         List<String> carNames = StringChanger.toTrimmedStringList(userInput, ",");
@@ -43,6 +45,11 @@ public class RaceService {
         for (Car car : cars) {
             car.race(Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER));
         }
+    }
+
+    public List<String> getWinners() {
+        raceOfficial = new RaceOfficial();
+        return raceOfficial.findWinners(cars);
     }
 
     private void validateCarNames(List<String> carNames) {

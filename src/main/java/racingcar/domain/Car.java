@@ -25,6 +25,10 @@ public class Car implements Comparable<Car> {
         return this.position - other.position;
     }
 
+    public boolean isSamePosition(Car other) {
+        return this.position == other.position;
+    }
+
     public void race(int determiner) {
         if (determiner >= MOVING_FORWARD) {
             moveForward();

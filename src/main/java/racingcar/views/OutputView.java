@@ -10,6 +10,10 @@ public class OutputView {
     private OutputView() {
     }
 
+    public static void printPrefaceOfResult() {
+        System.out.println(LINE_SEPARATOR + "실행 결과");
+    }
+
     public static void printResultOfRound(List<Car> cars) {
         StringBuilder resultOfRound = new StringBuilder();
         for (Car car : cars) {
