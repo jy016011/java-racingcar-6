@@ -24,6 +24,6 @@ public class RaceServiceTest {
     @ParameterizedTest
     void inputInvalidNumberOfRounds(String userInput) {
         RaceService raceService = new RaceService();
-        assertThatThrownBy((() -> raceService.runRounds(userInput))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy((() -> raceService.setRounds(userInput))).isInstanceOf(IllegalArgumentException.class);
     }
 }

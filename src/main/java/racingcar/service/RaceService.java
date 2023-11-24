@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,8 +10,10 @@ import racingcar.utils.StringChanger;
 
 public class RaceService {
     private static final int FIRST_ROUND = 1;
-    private static final int MIN_NUMBER_OF_CARS = 1;
+    private static final int MIN_RANDOM_NUMBER = 0;
+    private static final int MAX_RANDOM_NUMBER = 9;
     private List<Car> cars;
+    private int numberOfRounds;
 
     public void setCars(String userInput) {
         List<String> carNames = StringChanger.toTrimmedStringList(userInput, ",");
@@ -26,19 +29,21 @@ public class RaceService {
         return Collections.unmodifiableList(cars);
     }
 
-    public void runRounds(String userInput) {
+    public void setRounds(String userInput) {
         int numberOfRounds = StringChanger.toInteger(userInput);
         validateNumberOfRounds(numberOfRounds);
-//        for (int round = FIRST_ROUND; round <= numberOfRounds; round++) {
-//            raceCars();
-//        }
+        this.numberOfRounds = numberOfRounds;
     }
 
-//    private void raceCars(){
-//        for (Car car : cars) {
-//            car.race();
-//        }
-//    }
+    public int getNumberOfRounds() {
+        return numberOfRounds;
+    }
+
+    public void raceCars() {
+        for (Car car : cars) {
+            car.race(Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER));
+        }
+    }
 
     private void validateCarNames(List<String> carNames) {
         ArgumentValidator.isUnique(carNames);
