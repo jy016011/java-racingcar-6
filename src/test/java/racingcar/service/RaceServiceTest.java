@@ -18,4 +18,12 @@ public class RaceServiceTest {
         RaceService raceService = new RaceService();
         assertThatThrownBy(() -> raceService.setCars(userInput)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("시도할 회수가 숫자가 아니거나, 1미만의 수라면 예외가 발생할 것이다.")
+    @ValueSource(strings = {"12a", "0", "-1"})
+    @ParameterizedTest
+    void inputInvalidNumberOfRounds(String userInput) {
+        RaceService raceService = new RaceService();
+        assertThatThrownBy((() -> raceService.runRounds(userInput))).isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.utils.ArgumentValidator;
@@ -19,6 +20,10 @@ public class RaceService {
             cars.add(new Car(name));
         }
         this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void runRounds(String userInput) {
