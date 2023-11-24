@@ -1,6 +1,8 @@
 package racingcar.domain;
 
-public class Car {
+import racingcar.utils.ArgumentValidator;
+
+public class Car implements Comparable<Car> {
     private final static int MOVING_FORWARD = 4;
     private final String name;
     private int position;
@@ -18,6 +20,11 @@ public class Car {
         return position;
     }
 
+    @Override
+    public int compareTo(Car other) {
+        return this.position - other.position;
+    }
+
     public void race(int determiner) {
         if (determiner >= MOVING_FORWARD) {
             moveForward();
@@ -29,6 +36,7 @@ public class Car {
     }
 
     private void validate(String name) {
-
+        ArgumentValidator.isNotLessThan(name.length(), 1);
+        ArgumentValidator.isNotGreaterThan(name.length(), 5);
     }
 }
