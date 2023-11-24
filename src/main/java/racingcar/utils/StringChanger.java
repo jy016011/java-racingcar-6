@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class StringChanger {
     private static final int INCLUDING_LAST_BLANK = -1;
-    private static final int ITSELF = 0;
+    private static final int START_OF_STRING = 0;
 
     private StringChanger() {
     }
@@ -23,7 +23,9 @@ public class StringChanger {
         return Integer.parseInt(input);
     }
 
-    public static char toChar(String input) {
-        return input.charAt(ITSELF);
+    public static String cutLastRegex(StringBuilder stringBuilder, String regex) {
+        int cutLength = stringBuilder.length() - regex.length();
+        return stringBuilder.substring(START_OF_STRING, cutLength);
     }
+
 }

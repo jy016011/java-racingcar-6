@@ -49,4 +49,24 @@ public class OutputViewTest {
         OutputView.printResultOfRound(cars);
         assertThat(output()).contains("pobi : -", "jun : ");
     }
+
+    @DisplayName("최종 우승자 2명 출력 확인")
+    @Test
+    void printWinners() {
+        List<String> winners = new ArrayList<>(
+                List.of("pobi", "jun")
+        );
+        OutputView.printWinners(winners);
+        assertThat(output()).contains("최종 우승자 : pobi, jun");
+    }
+
+    @DisplayName("최종 우승자 1명 출력 확인")
+    @Test
+    void printWinner() {
+        List<String> winners = new ArrayList<>(
+                List.of("pobi")
+        );
+        OutputView.printWinners(winners);
+        assertThat(output()).contains("최종 우승자 : pobi");
+    }
 }
