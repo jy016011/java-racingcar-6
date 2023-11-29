@@ -27,13 +27,6 @@ public class ArgumentValidator {
         }
     }
 
-    public static void isEqual(int checkingNumber, int standardNumber) {
-        boolean notEqual = checkingNumber != standardNumber;
-        if (notEqual) {
-            raiseIllegalArgumentException(ERROR_MESSAGE_HEADER + " " + standardNumber + "와 같은 수가 아닙니다.");
-        }
-    }
-
     public static void isUnique(List<String> inputs) {
         boolean isDuplicated = (
                 inputs.stream().distinct().count() != inputs.size()
